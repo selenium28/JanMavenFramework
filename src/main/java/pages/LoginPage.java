@@ -5,8 +5,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import core.StepBase;
+import utility.UtilityClass;
 
 public class LoginPage extends StepBase{
+	
+	UtilityClass objUtilityClass = new UtilityClass();
 
 	@FindBy(xpath = "//*[@name='username']")
 	WebElement userName;
@@ -22,9 +25,14 @@ public class LoginPage extends StepBase{
 	}
 	
 	public void loginMethod() {
-		userName.sendKeys("Admin");
-		password.sendKeys("admin123");
-		loginBtn.click();
+		String user = "Admin";
+//		userName.sendKeys("Admin");
+//		password.sendKeys("admin123");
+//		loginBtn.click();
+		
+		objUtilityClass.sendKeysWebElements(userName, user);
+		objUtilityClass.sendKeysWebElements(password, "admin123");
+		objUtilityClass.clickOnWebElement(loginBtn, 10);
 	}
 	
 }
