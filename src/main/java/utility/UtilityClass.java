@@ -2,7 +2,9 @@ package utility;
 
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,5 +25,16 @@ public class UtilityClass extends StepBase{
 		element.clear();
 		element.sendKeys(text);
 	}
+	
+	public void alertAccept(WebDriver driver) {
+		driver.switchTo().alert().accept();
+	}
+	
+	public void mouseHoverAndClick(WebElement element) {
+		Actions action = new Actions(driver);
+		action.moveToElement(element).click().build().perform();
+	}
+	
+	// Create 3 functions of dropdown - 1. By index, By value, By visible text 
 
 }
